@@ -22,6 +22,13 @@ class DataClient:
     def _default_client(self):
         return httpx.AsyncClient()
 
+    async def __aenter__(self):
+        await self.client.__aenter__()
+        return self
+
+    async def __aexit__(self, *args, **kwargs):
+        await self.client.__aexit__(*args, **kwargs)
+
     async def _get(self, url: str, **kwargs) -> httpx.Response:
         log.debug("_get", url=url, **kwargs)
         return await self.client.get(url, **kwargs)

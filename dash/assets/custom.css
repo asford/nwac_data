@@ -9,10 +9,10 @@ body{
   color: #203cb3;
 }
 
-.study-browser-banner {
+.app-banner {
   background: rgb(2,21,70);
   color: white;
-  padding: 12px;
+  padding: 0px;
   padding-left: 48px;
 }
 
@@ -58,7 +58,7 @@ h5{
 .bg-white{
   background-color: white;
   padding: 24px 32px;
-  height: 500px;
+  height: 690px;
 }
 
 .app-body{
@@ -66,12 +66,12 @@ h5{
 }
 
 .card{
-  padding:48px 24px 48px 24px;
+  padding:24px 12px 24px 12px;
   margin-left: 4%;
 }
 
 .card-left{
-  padding:48px 24px 48px 24px;
+  padding:24px 12px 24px 12px;
   margin-left: 0px;
 }
 
@@ -101,36 +101,26 @@ h5{
   .Select-menu-outer, .Select-value{
     font-size: 10.5px;
   }
-  .upload{
-    padding: 5px;
-  }
 }
 
 /* mobile */
 @media only screen and (max-width: 768px) {
-  .upload{
-    line-height: 60px;
-    border-width: 1px;
-    border-style: dashed;
-    border-radius: 5px;
-    text-align: center;
-    font-size: small;
-  }
 
   .columns{
     width: 100%;
   }
 
   .card, .card-left{
-    padding: 24px;  
+    padding: 12px;  
     margin: 0px;
   } 
 
-  .bg-white{
+  .bg-white {
     height: auto;
+    padding: 12px 12px;
   }
   
-  .study-browser-banner{
+  .app-banner {
     padding-left: 24px;
   }
 
@@ -167,7 +157,7 @@ h5{
   }
 
   .user-control{
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

@@ -24,6 +24,8 @@ def _alpha(color, a):
 
 
 def add_temp_trace(stations: Iterable[StationData], f: go.Figure, **f_kwargs):
+    obs = None
+
     for i, s in enumerate(stations):
         color = colorscale[i]
         obs = s.obs
@@ -41,17 +43,18 @@ def add_temp_trace(stations: Iterable[StationData], f: go.Figure, **f_kwargs):
             **f_kwargs,
         )
 
-    f.add_shape(
-        go.layout.Shape(
-            type="line",
-            x0=_local_time(obs.index).values[0],
-            x1=_local_time(obs.index).values[-1],
-            y0=32,
-            y1=32,
-            line=dict(dash="dot", width=1),
-        ),
-        **f_kwargs,
-    )
+    if obs is not None:
+        f.add_shape(
+            go.layout.Shape(
+                type="line",
+                x0=_local_time(obs.index).values[0],
+                x1=_local_time(obs.index).values[-1],
+                y0=32,
+                y1=32,
+                line=dict(dash="dot", width=1),
+            ),
+            **f_kwargs,
+        )
 
     f.update_yaxes(
         patch=go.layout.YAxis(title="Temperature").to_plotly_json(), **f_kwargs
@@ -272,5 +275,9 @@ def plot_station_data(stations):
     fig.update_layout(hovermode="x")
     fig.update_layout(showlegend=True, legend_orientation="h", legend_y=-0.15)
 
-    fig.update_layout(height=800)
+    fig.update_layout(
+        height=700,
+        autosize=True,
+        margin=go.layout.Margin(l=12, r=12, b=12, t=12, pad=4),
+    )
     return fig
