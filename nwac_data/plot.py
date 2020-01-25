@@ -274,6 +274,7 @@ def plot_station_data(stations):
 
     fig.update_layout(hovermode="x")
     fig.update_layout(showlegend=True, legend_orientation="h", legend_y=-0.15)
+    fig.update_xaxes(patch=go.layout.XAxis(tickformat="%H:%M %a %b %d").to_plotly_json())
 
     fig.update_layout(
         height=700,

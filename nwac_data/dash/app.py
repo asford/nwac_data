@@ -36,6 +36,7 @@ app = dash.Dash(
 )
 
 app.config.suppress_callback_exceptions = True
+app.scripts.config.serve_locally = False
 
 app.layout = html.Div(
     [dcc.Location(id="url", refresh=False), html.Div(id="page-layout")]
@@ -82,7 +83,16 @@ def build_layout(state: PageState):
         )
     ]
 
-    content = [html.Div(className="bg-white", children=[dcc.Graph(id="plot")])]
+    content = [
+        html.Div(
+            className="bg-white",
+            children=[
+                dcc.Loading(
+                    id="loading-plot", children=dcc.Graph(id="plot"), type="default"
+                )
+            ],
+        )
+    ]
 
     return html.Div(
         children=[
@@ -148,3 +158,6 @@ def update_plot(sites):
 def update_url(sites):
     log.info("update_location", sites=sites)
     return "?" + PageState(sites).encode()
+
+
+server = app.server

@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "app_function": "nwac_data.dash.app.server",
+        "aws_region": "us-east-2",
+        "profile_name": "372057302496.Admin",
+        "project_name": "nwac_data",
+        "runtime": "python3.7",
+        "s3_bucket": "zappa-372057302496-us-east-2",
+        "certificate_arn": "arn:aws:acm:us-east-1:372057302496:certificate/cc1d17ea-0875-4b18-9e4a-f915bec77b9e",
+        "domain": "nwac-data.dev.asford.info",
+        "route53_enabled": "True",
+        "exclude": [".conda"],
+        "slim_handler": "True"
+    }
+}
